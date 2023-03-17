@@ -9,5 +9,9 @@
 ; Pedimos archivo del código al usuario
 (display "Nombre de archivo (con extensión): ")
 (define file (read))
+(display file)
 
+; Impresión en HTML
+
+; Sugerencia armar un diccionario
 
