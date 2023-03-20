@@ -7,9 +7,9 @@
 ;     Luis Roberto Martínez Ramírez  A01662619
 
 ; Pedimos archivo del código al usuario
-(display "Nombre de archivo (con extensión): ")
-(define file (read))
-(display file)
+(display "Ruta de archivo (con extensión): ")
+(open-input-file (string (read)))
+; (display file)
 
 ; Impresión en HTML
 
