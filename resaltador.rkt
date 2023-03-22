@@ -8,8 +8,24 @@
 
 ; Pedimos archivo del código al usuario
 (display "Ruta de archivo (con extensión): ")
-(open-input-file (string (read)))
-; (display file)
+(define file (open-input-file (symbol->string (read))))
+
+; Mostramos el objeto 'file' en sí
+(display file)
+(display #\newline)
+
+; Implementación de función que muestra el archivo
+(define (print-file char)
+    (if (not (eof-object? char))
+        (cons char (print-file (read-char file)))
+        (begin
+          (close-input-port file)        ; Cerramos archivo
+          (list))))  
+
+; Mostramos código del archivo
+(display #\newline)
+(display (list->string (print-file (read-char file))))
+(display #\newline)
 
 ; Impresión en HTML
 
