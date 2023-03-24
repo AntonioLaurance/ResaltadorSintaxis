@@ -10,6 +10,39 @@
 ; (require scribble/html/html)
 ; (require syntax-color/racket-navigation)
 
+; Definimos encabezado para archivos HTML
+(define headerHTML(list "<!DOCTYPE html>"
+        "<html>"
+        "<head>"
+            "<meta charset=\"UTF-8\">"
+            "<!-- white-space: pre modifica el body para que cada linea finalice con <br> (salto de linea), preservando la sintaxis original -->"
+            "<!-- CSS naranja para los números -->"
+            "<!-- CSS morado para los booleanos -->"
+            "<!-- CSS verde para los condicionales -->"
+            "<!-- CSS rosa para los operadores aritmeticos -->"
+            "<!-- CSS negro para los char -->"
+            "<!-- CSS verde para los condicionales especiales -->"
+            "<style>"
+                   "body{ white-space: pre; font-family: Courier New; font-size: 14px }"
+                   "h3{ text-align: center }"
+                   ".center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}"
+                   ".numero{ color: orange; }"
+                   ".booleano{ color: purple; }"
+                   ".condicional{ color: green; }"
+                   ".extra{ color: hotpink; }"
+                   ".operador{ color: black; }"
+                   ".header{ color: YellowGreen; }"
+            "</style>"
+            "<title>Resaltador de Sintaxis</title>"
+        "</head>"
+        "<body>"
+            "<h3> Resaltador de Sintaxis</h3>"
+            "<br>"))
+
+
+; Definimos el final del archivo HTML
+(define finalHTML (list "</body>" "</html>"))
+
 ; Pedimos archivo del código al usuario
 (display "Ruta de archivo (con extensión): ")
 (define file (open-input-file (symbol->string (read))))
@@ -27,19 +60,18 @@
           (close-input-port file)        ; Cerramos archivo
           (list))))
 
-; Impresión en HTML
-(display-to-file (list (list->string (print-file (read-char file))))
-                       "Prueba.html"
-                       #:exists 'append)
-
-; (display-lines-to-file (list "Se supone que esto es otra línea") "Prueba.html" #:exists 'append)
+; Guardamos el código del archivo en una lista de carácteres
+(define list-char-file (print-file (read-char file)))
 
 ; Mostramos código del archivo
 (display #\newline)
-; (display (list->string (print-file (read-char file))))
+(display (list->string list-char-file))
 (display #\newline)
 
-
+; Impresión en HTML
+(display-lines-to-file (append headerHTML (list (list->string list-char-file)) finalHTML)
+                      "Prueba.html"
+                      #:exists 'replace)
 
 ; Sugerencia armar un diccionario
 
