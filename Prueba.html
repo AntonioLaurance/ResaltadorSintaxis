@@ -1,1 +1,122 @@
-(/* Uso de apuntadores para hacer un String  */ #include <stdio.h>  int main(void){ 	char *str, c; 	int i = 0; 	printf("Give me a string: "); 	 	// Read the line  	while((c = getchar()) != '\n'){ 		str[i] = c; 		i++; 	} 	 	str[i] = '\0'; // Null terminator  	printf("Your string is: %s\n\n", str);  	return 0; })
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- white-space: pre modifica el body para que cada linea finalice con <br> (salto de linea), preservando la sintaxis original -->
+<!-- CSS naranja para los números -->
+<!-- CSS morado para los booleanos -->
+<!-- CSS verde para los condicionales -->
+<!-- CSS rosa para los operadores aritmeticos -->
+<!-- CSS negro para los char -->
+<!-- CSS verde para los condicionales especiales -->
+<style>
+body{ white-space: pre; font-family: Courier New; font-size: 14px }
+h3{ text-align: center }
+.center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}
+.numero{ color: orange; }
+.booleano{ color: purple; }
+.condicional{ color: green; }
+.extra{ color: hotpink; }
+.operador{ color: black; }
+.header{ color: YellowGreen; }
+</style>
+<title>Resaltador de Sintaxis</title>
+</head>
+<body>
+<h3> Resaltador de Sintaxis</h3>
+<code>
+#lang slideshow
+; Resaltador de sintaxis para proyecto
+
+; Integrantes del equipo:
+;     Ricardo Campos Luna            A01656898
+;     Samuel Sandoval Delgado        A01656191
+;     LuisRoberto Martínez Ramírez   A01662619
+
+; Para manejo de archivos HTML
+; (require scribble/html/html)
+; (require syntax-color/racket-navigation)
+
+; Definimos encabezado para archivos HTML
+(define headerHTML (list "&lt;!DOCTYPE html&gt;"
+        "&lt;html&gt;"
+        "&lt;head&gt;"
+            "&lt;meta charset=\"UTF-8\"&gt;"
+            "&lt;!-- white-space: pre modifica el body para que cada linea finalice con &lt;br&gt; (salto de linea), preservando la sintaxis original --&gt;"
+            "&lt;!-- CSS naranja para los números --&gt;"
+            "&lt;!-- CSS morado para los booleanos --&gt;"
+            "&lt;!-- CSS verde para los condicionales --&gt;"
+            "&lt;!-- CSS rosa para los operadores aritmeticos --&gt;"
+            "&lt;!-- CSS negro para los char --&gt;"
+            "&lt;!-- CSS verde para los condicionales especiales --&gt;"
+            "&lt;style&gt;"
+                   "body{ white-space: pre; font-family: Courier New; font-size: 14px }"
+                   "h3{ text-align: center }"
+                   ".center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}"
+                   ".numero{ color: orange; }"
+                   ".booleano{ color: purple; }"
+                   ".condicional{ color: green; }"
+                   ".extra{ color: hotpink; }"
+                   ".operador{ color: black; }"
+                   ".header{ color: YellowGreen; }"
+            "&lt;/style&gt;"
+            "&lt;title&gt;Resaltador de Sintaxis&lt;/title&gt;"
+        "&lt;/head&gt;"
+        "&lt;body&gt;"
+            "&lt;h3&gt; Resaltador de Sintaxis&lt;/h3&gt;"
+            "&lt;code&gt;"))
+
+
+; Definimos el final del archivo HTML
+(define finalHTML (list "&lt;/code&gt;" "&lt;/body&gt;" "&lt;/html&gt;"))
+
+; Pedimos archivo del código al usuario
+(display "Ruta de archivo (con extensión): ")
+(define file (open-input-file (symbol-&gt;string (read))))
+
+; Mostramos el objeto 'file' en sí
+(display #\newline)
+(display file)
+(display #\newline)
+
+; Implementación de función que muestra el archivo
+(define (print-file char)
+    (if (not (eof-object? char))
+        (cons char (print-file (read-char file)))
+        (begin
+          (close-input-port file)        ; Cerramos archivo
+          (list))))
+
+; Guardamos el código del archivo en una lista de carácteres
+(define list-char-file (print-file (read-char file)))
+
+; Mostramos código del archivo
+(display #\newline)
+(display (list-&gt;string list-char-file))
+(display #\newline)
+
+; Función que convierte los carácteres especiales "&lt;" y "&gt;" para que sean
+; exitosamente leídos por el navegador
+(define (process-text char-list)
+  (if (empty? char-list)
+      (list)
+      (if (equal? (list-ref char-list 0) #\&lt;)      ; Remplazamos "&lt;" por "&lt;"
+            (append '(#\& #\l #\t #\;) (process-text (cdr char-list)))
+            (if (equal? (list-ref char-list 0) #\&gt;)  ; Remplazamos "&gt;" por "&gt;"
+                (append '(#\& #\g #\t #\;) (process-text (cdr char-list)))
+                (append (list (car char-list)) (process-text (cdr char-list)))))))                              
+
+
+; Impresión en HTML
+(display-lines-to-file (append headerHTML (list (list-&gt;string (process-text list-char-file))) finalHTML)
+                      "Prueba.html"
+                      #:exists 'replace)
+
+; Sugerencia armar un diccionario
+
+
+ 
+
+</code>
+</body>
+</html>

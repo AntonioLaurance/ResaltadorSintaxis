@@ -4,14 +4,14 @@
 ; Integrantes del equipo:
 ;     Ricardo Campos Luna            A01656898
 ;     Samuel Sandoval Delgado        A01656191
-;     LuisRoberto Martínez Ramírez  A01662619
+;     LuisRoberto Martínez Ramírez   A01662619
 
 ; Para manejo de archivos HTML
 ; (require scribble/html/html)
 ; (require syntax-color/racket-navigation)
 
 ; Definimos encabezado para archivos HTML
-(define headerHTML(list "<!DOCTYPE html>"
+(define headerHTML (list "<!DOCTYPE html>"
         "<html>"
         "<head>"
             "<meta charset=\"UTF-8\">"
@@ -37,11 +37,11 @@
         "</head>"
         "<body>"
             "<h3> Resaltador de Sintaxis</h3>"
-            "<br>"))
+            "<code>"))
 
 
 ; Definimos el final del archivo HTML
-(define finalHTML (list "</body>" "</html>"))
+(define finalHTML (list "</code>" "</body>" "</html>"))
 
 ; Pedimos archivo del código al usuario
 (display "Ruta de archivo (con extensión): ")
@@ -68,8 +68,20 @@
 (display (list->string list-char-file))
 (display #\newline)
 
+; Función que convierte los carácteres especiales "<" y ">" para que sean
+; exitosamente leídos por el navegador
+(define (process-text char-list)
+  (if (empty? char-list)
+      (list)
+      (if (equal? (list-ref char-list 0) #\<)      ; Remplazamos "<" por "&lt;"
+            (append '(#\& #\l #\t #\;) (process-text (cdr char-list)))
+            (if (equal? (list-ref char-list 0) #\>)  ; Remplazamos ">" por "&gt;"
+                (append '(#\& #\g #\t #\;) (process-text (cdr char-list)))
+                (append (list (car char-list)) (process-text (cdr char-list)))))))                              
+
+
 ; Impresión en HTML
-(display-lines-to-file (append headerHTML (list (list->string list-char-file)) finalHTML)
+(display-lines-to-file (append headerHTML (list (list->string (process-text list-char-file))) finalHTML)
                       "Prueba.html"
                       #:exists 'replace)
 
