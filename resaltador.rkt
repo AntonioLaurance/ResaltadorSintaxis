@@ -26,12 +26,14 @@
                    "body{ white-space: pre; font-family: Courier New; font-size: 14px }"
                    "h3{ text-align: center }"
                    ".center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}"
-                   ".numero{ color: blue; }"
+                   ".numero{ color: darkseagreen; }"
                    ".booleano{ color: blue; }"
-                   ".condicional{ color: green; }"
+                   ".condicional{ color: purple; }"
                    ".extra{ color: hotpink; }"
                    ".operador{ color: black; }"
                    ".header{ color: green; }"
+                   ".string{ color: orange }"
+                   ".function{ color: yellow }"
             "</style>"
             "<title>Resaltador de Sintaxis</title>"
         "</head>"
@@ -43,6 +45,7 @@
 ; Definimos el final del archivo HTML
 (define finalHTML (list "</code>" "</body>" "</html>"))
 
+; Motor de expresiones regulares
 (define (regex listaPy)
   (let regexAhtml 
     ; Definimos un nuevo nombre a la listaPy y una lista final que guardara el sintaxis HTML. La inicializamos vacía.
@@ -57,39 +60,51 @@
            ([car_de_lista (car listaArchEnt)]
             ; [ car de lista se convertirá en <span> (formato HTML) en caso de encontrar un match con la expresión ]
             ; [ & sustiuye al input en el insert en Racket (regEXP-input-insert) ]
+            [car_de_lista (regexp-replace* #px"/\\*[^(\\'*/')]*\\*/" car_de_lista "<span class='header'>&</span>")]
+            [car_de_lista (regexp-replace* #px"//[^\n]*" car_de_lista "<span class='header'>&</span>")]
+            ;[car_de_lista (regexp-replace* #px"\\(" car_de_lista "<span class='function'>&</span>")]
             [car_de_lista (regexp-replace* #px"for" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"(if|elif)" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"if" car_de_lista "<span class='condicional'>&</span>")]
             [car_de_lista (regexp-replace* #px"else" car_de_lista "<span class='condicional'>&</span>")]
             [car_de_lista (regexp-replace* #px"while" car_de_lista "<span class='condicional'>&</span>"	)]
+            [car_de_lista (regexp-replace* #px"switch" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"break" car_de_lista "<span class='condicional'>&</span>"	)]
+            [car_de_lista (regexp-replace* #px"continue" car_de_lista "<span class='condicional'>&</span>")]
             [car_de_lista (regexp-replace* #px"return" car_de_lista "<span class='condicional'>&</span>")]
             [car_de_lista (regexp-replace* #px"break" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"bool" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"append" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"str" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"len" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"print" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"pass" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"try" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"pow" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"except" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"del" car_de_lista "<span class='extra'>&</span>"	)]
-            [car_de_lista (regexp-replace* #px"range" car_de_lista "<span class='extra'>&</span>")]
-            [car_de_lista (regexp-replace* #px"global" car_de_lista "<span class='header'>&</span>")]
-            [car_de_lista (regexp-replace* #px"import" car_de_lista "<span class='header'>&</span>")]
-            [car_de_lista (regexp-replace* #px"input" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"float" car_de_lista "<span class='condicional'>&</span>")]
-            [car_de_lista (regexp-replace* #px"def" car_de_lista "<span class='header'>&</span>")]
+            [car_de_lista (regexp-replace* #px"bool" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"void" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"short" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"long" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"signed" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"unsigned" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"volatile" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"static" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"enum" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"struct" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"typedef" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"union" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"extern" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"printf" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"int" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"float" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"double" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"\".*\1" car_de_lista "<span class='string'>&</span>")]
+            ;[car_de_lista (regexp-replace* #px"([\'\"])(.*)\1" car_de_lista "<span class='string'>&</span>")]
+            [car_de_lista (regexp-replace* #px"#[^ ]*" car_de_lista "<span class='condicional'>&</span>")]
             [car_de_lista (regexp-replace* #px"([+]|[-]|[*])" car_de_lista "<span class='operador'>&</span>")]
-            [car_de_lista (regexp-replace* #px"/*.*" car_de_lista "<span class='header'>&</span>")] ; Comentarios
             [car_de_lista (regexp-replace* #px"!=" car_de_lista "<span class='operador'>&</span>")]
             [car_de_lista (regexp-replace* #px"==" car_de_lista "<span class='operador'>&</span>")]
             [car_de_lista (regexp-replace* #px"%" car_de_lista "<span class='operador'>&</span>")]
-            [car_de_lista (regexp-replace* #px"//" car_de_lista "<span class='operador'>&</span>")]
             [car_de_lista (regexp-replace* #px"[(]|[)]" car_de_lista "<span class='operador'>&</span>")]
             [car_de_lista (regexp-replace* #px"<=" car_de_lista "<span class='operador'>&</span>")]
             [car_de_lista (regexp-replace* #px"(None|none)" car_de_lista "<span class='booleano'>&</span>")]
-            [car_de_lista (regexp-replace* #px"(True|true)" car_de_lista "<span class='booleano'>&</span>")]
-            [car_de_lista (regexp-replace* #px"(False|false)" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"true" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"false" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"char" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"const" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"auto" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"static" car_de_lista "<span class=''booleano'>&</span>")]
             [car_de_lista (regexp-replace* #px"and" car_de_lista "<span class='booleano'>&</span>")]
             [car_de_lista (regexp-replace* #px"not" car_de_lista "<span class='booleano'>&</span>")]
             [car_de_lista (regexp-replace* #px"[0-9]+" car_de_lista "<span class='numero'>&</span>")])
