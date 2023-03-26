@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- white-space: pre modifica el body para que cada linea finalice con <br> (salto de linea), preservando la sintaxis original -->
-<!-- CSS naranja para los números -->
+<!-- CSS verde para los números -->
 <!-- CSS morado para los booleanos -->
 <!-- CSS verde para los condicionales -->
 <!-- CSS rosa para los operadores aritmeticos -->
@@ -13,110 +13,72 @@
 body{ white-space: pre; font-family: Courier New; font-size: 14px }
 h3{ text-align: center }
 .center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}
-.numero{ color: orange; }
-.booleano{ color: purple; }
+.numero{ color: blue; }
+.booleano{ color: blue; }
 .condicional{ color: green; }
 .extra{ color: hotpink; }
 .operador{ color: black; }
-.header{ color: YellowGreen; }
+.header{ color: green; }
 </style>
 <title>Resaltador de Sintaxis</title>
 </head>
 <body>
 <h3> Resaltador de Sintaxis</h3>
 <code>
-#lang slideshow
-; Resaltador de sintaxis para proyecto
+<span class='header'><span class='operador'>-</span><span class='operador'>-</span> MySQL dump <span class='numero'>10</span>.<span class='numero'>13</span>  Di<span class='condicional'>str</span>ib <span class='numero'>8</span>.<span class='numero'>0</span>.<span class='numero'>31</span>, <span class='condicional'>for</span> Linux <span class='operador'>(</span>x<span class='numero'>86</span>_<span class='numero'>64</span><span class='operador'>)</span>
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Host: localhost    Database: events
+<span class='operador'>-</span><span class='operador'>-</span> <span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Server version	<span class='numero'>8</span>.<span class='numero'>0</span>.<span class='numero'>31</span><span class='operador'>-</span><span class='numero'>0</span>ubuntu<span class='numero'>0</span>.<span class='numero'>20</span>.<span class='numero'>04</span>.<span class='numero'>1</span>
 
-; Integrantes del equipo:
-;     Ricardo Campos Luna            A01656898
-;     Samuel Sandoval Delgado        A01656191
-;     LuisRoberto Martínez Ramírez   A01662619
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>50503</span> SET NAMES utf<span class='numero'>8</span>mb<span class='numero'>4</span> <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40103</span> SET @OLD_TIME_ZONE=@@TIME_ZONE <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40103</span> SET TIME_ZONE='<span class='operador'>+</span><span class='numero'>00</span>:<span class='numero'>00</span>' <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40014</span> SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=<span class='numero'>0</span> <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40014</span> SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=<span class='numero'>0</span> <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40111</span> SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=<span class='numero'>0</span> <span class='operador'>*</span>/;
 
-; Para manejo de archivos HTML
-; (require scribble/html/html)
-; (require syntax-color/racket-navigation)
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Table <span class='condicional'>str</span>ucture <span class='condicional'>for</span> table `events`
+<span class='operador'>-</span><span class='operador'>-</span>
+SELECT 
+DroP TablE IF exists `events`;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET @saved_cs_client     = @@character_set_client <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>50503</span> SET character_set_client = utf<span class='numero'>8</span>mb<span class='numero'>4</span> <span class='operador'>*</span>/;
+CREATE TABLE `events` <span class='operador'>(</span>
+  `id` int NOT NULL AUTO_INCREMENT,
+  `lat` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT NULL,
+  `lon` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT NULL,
+  `color` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT NULL,
+  PRIMARY KEY <span class='operador'>(</span>`id`<span class='operador'>)</span>
+<span class='operador'>)</span> ENGINE=InnoDB AUTO_INCREMENT=<span class='numero'>13</span> DEFAULT CHARSET=utf<span class='numero'>8</span> COLLATE=utf<span class='numero'>8</span>_general_ci;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET character_set_client = @saved_cs_client <span class='operador'>*</span>/;
 
-; Definimos encabezado para archivos HTML
-(define headerHTML (list "&lt;!DOCTYPE html&gt;"
-        "&lt;html&gt;"
-        "&lt;head&gt;"
-            "&lt;meta charset=\"UTF-8\"&gt;"
-            "&lt;!-- white-space: pre modifica el body para que cada linea finalice con &lt;br&gt; (salto de linea), preservando la sintaxis original --&gt;"
-            "&lt;!-- CSS naranja para los números --&gt;"
-            "&lt;!-- CSS morado para los booleanos --&gt;"
-            "&lt;!-- CSS verde para los condicionales --&gt;"
-            "&lt;!-- CSS rosa para los operadores aritmeticos --&gt;"
-            "&lt;!-- CSS negro para los char --&gt;"
-            "&lt;!-- CSS verde para los condicionales especiales --&gt;"
-            "&lt;style&gt;"
-                   "body{ white-space: pre; font-family: Courier New; font-size: 14px }"
-                   "h3{ text-align: center }"
-                   ".center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}"
-                   ".numero{ color: orange; }"
-                   ".booleano{ color: purple; }"
-                   ".condicional{ color: green; }"
-                   ".extra{ color: hotpink; }"
-                   ".operador{ color: black; }"
-                   ".header{ color: YellowGreen; }"
-            "&lt;/style&gt;"
-            "&lt;title&gt;Resaltador de Sintaxis&lt;/title&gt;"
-        "&lt;/head&gt;"
-        "&lt;body&gt;"
-            "&lt;h3&gt; Resaltador de Sintaxis&lt;/h3&gt;"
-            "&lt;code&gt;"))
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Dumping data <span class='condicional'>for</span> table `events`
+<span class='operador'>-</span><span class='operador'>-</span>
 
+LOCK TABLES `events` WRITE;
+/<span class='operador'>*</span>!<span class='numero'>40000</span> ALTER TABLE `events` DISABLE KEYS <span class='operador'>*</span>/;
+INSERT INTO `events` VALUES <span class='operador'>(</span><span class='numero'>6</span>,'<span class='numero'>19</span>.<span class='numero'>283497023317633</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13551212488649</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>7</span>,'<span class='numero'>19</span>.<span class='numero'>28429688404666</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13537089065343</span>','<span class='numero'>2</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>8</span>,'<span class='numero'>19</span>.<span class='numero'>28365003770222</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13716161592744</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>9</span>,'<span class='numero'>19</span>.<span class='numero'>28491603314897</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13390845644237</span>','<span class='numero'>3</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>10</span>,'<span class='numero'>19</span>.<span class='numero'>284557200939087</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13848389128377</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>11</span>,'<span class='numero'>19</span>.<span class='numero'>286482053255924</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13777977229077</span>','<span class='numero'>2</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>12</span>,'<span class='numero'>19</span>.<span class='numero'>282143266217208</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13443188575789</span>','<span class='numero'>3</span>'<span class='operador'>)</span>;
+/<span class='operador'>*</span>!<span class='numero'>40000</span> ALTER TABLE `events` ENABLE KEYS <span class='operador'>*</span>/;
+UNLOCK TABLES;
+/<span class='operador'>*</span>!<span class='numero'>40103</span> SET TIME_ZONE=@OLD_TIME_ZONE <span class='operador'>*</span>/;
 
-; Definimos el final del archivo HTML
-(define finalHTML (list "&lt;/code&gt;" "&lt;/body&gt;" "&lt;/html&gt;"))
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET SQL_MODE=@OLD_SQL_MODE <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40014</span> SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40014</span> SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40101</span> SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION <span class='operador'>*</span>/;
+/<span class='operador'>*</span>!<span class='numero'>40111</span> SET SQL_NOTES=@OLD_SQL_NOTES <span class='operador'>*</span>/;
 
-; Pedimos archivo del código al usuario
-(display "Ruta de archivo (con extensión): ")
-(define file (open-input-file (symbol-&gt;string (read))))
-
-; Mostramos el objeto 'file' en sí
-(display #\newline)
-(display file)
-(display #\newline)
-
-; Implementación de función que muestra el archivo
-(define (print-file char)
-    (if (not (eof-object? char))
-        (cons char (print-file (read-char file)))
-        (begin
-          (close-input-port file)        ; Cerramos archivo
-          (list))))
-
-; Guardamos el código del archivo en una lista de carácteres
-(define list-char-file (print-file (read-char file)))
-
-; Mostramos código del archivo
-(display #\newline)
-(display (list-&gt;string list-char-file))
-(display #\newline)
-
-; Función que convierte los carácteres especiales "&lt;" y "&gt;" para que sean
-; exitosamente leídos por el navegador
-(define (process-text char-list)
-  (if (empty? char-list)
-      (list)
-      (if (equal? (list-ref char-list 0) #\&lt;)      ; Remplazamos "&lt;" por "&lt;"
-            (append '(#\& #\l #\t #\;) (process-text (cdr char-list)))
-            (if (equal? (list-ref char-list 0) #\&gt;)  ; Remplazamos "&gt;" por "&gt;"
-                (append '(#\& #\g #\t #\;) (process-text (cdr char-list)))
-                (append (list (car char-list)) (process-text (cdr char-list)))))))                              
-
-
-; Impresión en HTML
-(display-lines-to-file (append headerHTML (list (list-&gt;string (process-text list-char-file))) finalHTML)
-                      "Prueba.html"
-                      #:exists 'replace)
-
-; Sugerencia armar un diccionario
-
-
- 
-
+<span class='operador'>-</span><span class='operador'>-</span> Dump completed on <span class='numero'>2022</span><span class='operador'>-</span><span class='numero'>11</span><span class='operador'>-</span><span class='numero'>16</span> <span class='numero'>17</span>:<span class='numero'>56</span>:<span class='numero'>01</span>
+</span><span class='header'></span>
 </code>
 </body>
 </html>

@@ -1,5 +1,6 @@
-/* Uso de apuntadores para hacer un String 
+/* Uso de apuntadores para hacer un String
 */
+
 #include <stdio.h>
 
 int main(void){
@@ -16,5 +17,5 @@ int main(void){
 	str[i] = '\0'; // Null terminator 
 	printf("Your string is: %s\n\n", str);
 
-	return 0;
+	return 0; 
 }
