@@ -4,4 +4,4 @@ En este repositorio se desarrollará un resaltador de sintaxis (análisis léxic
 - Python
 - SQL
 
-El archivo HTML generado por este resaltador se llama *Prueba.html*
+El archivo HTML generado por este resaltador se llama **Prueba.html**
