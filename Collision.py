@@ -25,6 +25,6 @@ crash = inCollision(ux, 7.5, 2.2, 5.13, -3.1, -2.2, 0.98, 3.7)
 print(crash)
 
 crash = inCollision(3.1, 7.5, 2.2, 7.13, -3.1, -2.2, 0.98, 3.7)
-print(crash)
+print(crash)  
 
 #Comentario

@@ -27,24 +27,50 @@ h3{ text-align: center }
 <body>
 <h3> Resaltador de Sintaxis</h3>
 <code>
-<span class='header'>/<span class='operador'>*</span> 
-Logical operators <span class='booleano'>and</span> <span class='booleano'>short</span> circuit evaluation
-Friday, <span class='numero'>11</span> June <span class='numero'>2021</span>
+<span class='header'>/* Enumerated Types
+<span class='operador'>*</span>  Saturday, <span class='numero'>23</span> October <span class='numero'>2021</span>
 <span class='operador'>*</span>/</span>
 
 <span class='condicional'>#include</span> &lt;stdio.h&gt;
+<span class='booleano'>
+enum </span>day{sun, mon, tue, wed, thu, fri, sat};  <span class='header'>//declare type</span>
+<span class='booleano'>typedef</span><span class='booleano'> enum </span>day day; try  
+<span class='booleano'>
+void </span>print_day<span class='operador'>(</span>day d<span class='operador'>)</span>
+{
+<span class='condicional'>	switch<span class='operador'>(</span></span>d<span class='operador'>)</span>{
+		case sun:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Sunday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case mon:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Monday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case tue:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Tuesday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case wed:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Wednesday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case thu:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Thursday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case fri:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Friday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		case sat:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Saturday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
+		default:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"<span class='operador'>%</span>d is an error"</span>, d<span class='operador'>)</span>;
+	}
+}
 
-<span class='booleano'>int</span> main<span class='operador'>(</span><span class='booleano'>void</span><span class='operador'>)</span>{
-	<span class='booleano'>int</span> outside, weather;
-	<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span><span class='string'>"\nEnter <span class='condicional'>if</span> outside <span class='numero'>1</span> <span class='booleano'>true</span> <span class='numero'>0</span> <span class='booleano'>false</span>:"<span class='operador'>)</span>;
-	scanf<span class='operador'>(</span>"<span class='operador'>%</span>d", &outside<span class='operador'>)</span>;
-	<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nEnter <span class='condicional'>if</span> rain <span class='numero'>1</span> <span class='booleano'>true</span> <span class='numero'>0</span> <span class='booleano'>false</span>:"<span class='operador'>)</span>;
-	scanf<span class='operador'>(</span>"<span class='operador'>%</span>d", &weather<span class='operador'>)</span>;
-	<span class='condicional'>if</span> <span class='operador'>(</span>outside && weather<span class='operador'>)</span>
-		<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nPlease use an umbrella.\n"<span class='operador'>)</span>;
-	<span class='condicional'>else</span>
-		<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nDress normally.\n\n"</span><span class='operador'>)</span>;
-	<span class='condicional'>return</span> <span class='numero'>0</span>;
+day last_day<span class='operador'>(</span>day d<span class='operador'>)</span>
+{
+<span class='condicional'>	return </span><span class='operador'>(</span>d <span class='operador'>-</span> <span class='numero'>1</span> <span class='operador'>%</span> <span class='numero'>7</span><span class='operador'>)</span>;
+}
+
+day next_day<span class='operador'>(</span>day d<span class='operador'>)</span>
+{
+<span class='condicional'>	return </span><span class='operador'>(</span>d <span class='operador'>+</span> <span class='numero'>1</span> <span class='operador'>%</span> <span class='numero'>7</span><span class='operador'>)</span>;
+}
+<span class='booleano'>
+int </span>main<span class='operador'>(</span><span class='operador'>)</span>
+{
+	day today = fri;
+	print_day<span class='operador'>(</span>today<span class='operador'>)</span>;
+<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
+	print_day<span class='operador'>(</span><span class='numero'>7</span><span class='operador'>)</span>;
+<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
+	print_day<span class='operador'>(</span>next_day<span class='operador'>(</span>today<span class='operador'>)</span><span class='operador'>)</span>;
+<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
+
+<span class='condicional'>	return </span><span class='numero'>0</span>;
 }
 
 </code>

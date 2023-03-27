@@ -10,7 +10,7 @@ int main(void){
 	// Read the line 
 	while((c = getchar()) != '\n'){
 		str[i] = c;
-		i++;
+		i++; 
 	}
 	
 	str[i] = '\0'; // Null terminator 
