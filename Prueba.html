@@ -27,25 +27,24 @@ h3{ text-align: center }
 <body>
 <h3> Resaltador de Sintaxis</h3>
 <code>
-<span class='header'>/<span class='operador'>*</span> Uso de apuntadores para hacer un String
+<span class='header'>/<span class='operador'>*</span> 
+Logical operators <span class='booleano'>and</span> <span class='booleano'>short</span> circuit evaluation
+Friday, <span class='numero'>11</span> June <span class='numero'>2021</span>
 <span class='operador'>*</span>/</span>
+
 <span class='condicional'>#include</span> &lt;stdio.h&gt;
 
 <span class='booleano'>int</span> main<span class='operador'>(</span><span class='booleano'>void</span><span class='operador'>)</span>{
-	<span class='booleano'>char</span> <span class='operador'>*</span>str, c;
-	<span class='booleano'>int</span> i = <span class='numero'>0</span>;
-	<span class='extra'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"Give me a string: "<span class='operador'>)</span>;
-	
-	<span class='header'>// Read the line </span>
-	<span class='condicional'>while</span><span class='operador'>(</span><span class='operador'>(</span>c = get<span class='booleano'>char</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>)</span> <span class='operador'>!=</span> '\n'<span class='operador'>)</span>{
-		str[i] = c;
-		i<span class='operador'>+</span><span class='operador'>+</span>;
-	}
-	
-	str[i] = '\<span class='numero'>0</span>'; <span class='header'>// Null terminator </span>
-	<span class='extra'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"Your string is: <span class='operador'>%</span>s\n\n", str<span class='operador'>)</span>;
-
-	<span class='condicional'>return</span> <span class='numero'>0</span>;  <span class='booleano'>auto</span>  <span class='booleano'>bool</span> <span class='booleano'>volatile</span> <span class='booleano'>enum</span> <span class='booleano'>extern</span> <span class='booleano'>struct</span> <span class='booleano'>union</span> <span class='booleano'>volatile</span> <span class='booleano'>typedef</span>  
+	<span class='booleano'>int</span> outside, weather;
+	<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span><span class='string'>"\nEnter <span class='condicional'>if</span> outside <span class='numero'>1</span> <span class='booleano'>true</span> <span class='numero'>0</span> <span class='booleano'>false</span>:"<span class='operador'>)</span>;
+	scanf<span class='operador'>(</span>"<span class='operador'>%</span>d", &outside<span class='operador'>)</span>;
+	<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nEnter <span class='condicional'>if</span> rain <span class='numero'>1</span> <span class='booleano'>true</span> <span class='numero'>0</span> <span class='booleano'>false</span>:"<span class='operador'>)</span>;
+	scanf<span class='operador'>(</span>"<span class='operador'>%</span>d", &weather<span class='operador'>)</span>;
+	<span class='condicional'>if</span> <span class='operador'>(</span>outside && weather<span class='operador'>)</span>
+		<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nPlease use an umbrella.\n"<span class='operador'>)</span>;
+	<span class='condicional'>else</span>
+		<span class='function'>pr<span class='booleano'>int</span>f</span><span class='operador'>(</span>"\nDress normally.\n\n"</span><span class='operador'>)</span>;
+	<span class='condicional'>return</span> <span class='numero'>0</span>;
 }
 
 </code>
