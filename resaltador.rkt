@@ -45,6 +45,32 @@
 ; Definimos el final del archivo HTML
 (define finalHTML (list "</code>" "</body>" "</html>"))
 
+; Pedimos archivo del código al usuario
+(display "Ruta de archivo (con extensión): ")
+(define file-title (symbol->string (read)))          ; Guardamos el nombre del archivo
+(define file (open-input-file file-title))
+
+; Mostramos el objeto 'file' en sí
+(display #\newline)
+(display file)
+(display #\newline)
+
+; Implementación de función que muestra el archivo
+(define (print-file char)
+    (if (not (eof-object? char))
+        (cons char (print-file (read-char file)))
+        (begin
+          (close-input-port file)        ; Cerramos archivo
+          (list))))
+
+; Guardamos el código del archivo en una lista de carácteres
+(define list-char-file (print-file (read-char file)))
+
+; Mostramos código del archivo
+(display #\newline)
+(display (list->string list-char-file))
+(display #\newline)
+
 ; Motor de expresiones regulares
 (define (regex listaPy)
   (let regexAhtml 
@@ -116,7 +142,61 @@
          (regexAhtml (cdr listaArchEnt) (append listaHTML (list car_de_lista)))))))
         ;pasamos como nueva lista el cdr de listaArchEnt y apendizamos a la lista final el nuevo car dado por regex-replace*
 
-; Motor de expresiones regulares
+(define (regexPy listaPy)
+  (let regexAhtml 
+    ; Definimos un nuevo nombre a la listaPy y una lista final que guardara el sintaxis HTML. La inicializamos vacía.
+    ([listaArchEnt listaPy][listaHTML empty])
+    ; Preguntamos si la lista de lineas esta vacia
+    (if(empty? listaArchEnt)
+       ; Si #t quiere decir que ya recorrimos toda la listaPy (listaArchEnt). Regresamos el formato HTML guardado en listaHTML
+       listaHTML 
+       ; Si #f quiere decir que aun no acabamos y debemos validar la linea siguiente. let* es un operando especial para evaluar condiciones 1 por 1. (los necesarios)
+       (let*
+           ; Creamos una variable especial para el car de la lista y empezamos el regex y formateo en HTML.
+           ([car_de_lista (car listaArchEnt)]
+            ; [ car de lista se convertirá en <span> (formato HTML) en caso de encontrar un match con la expresión ]
+            ; [ & sustiuye al input en el insert en Racket (regEXP-input-insert) ]
+            [car_de_lista (regexp-replace* #px"for" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"(if|elif)" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"else" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"while" car_de_lista "<span class='condicional'>&</span>"	)]
+            [car_de_lista (regexp-replace* #px"return" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"break" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"bool" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"append" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"str" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"len" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"print" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"pass" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"try" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"pow" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"except" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"del" car_de_lista "<span class='extra'>&</span>"	)]
+            [car_de_lista (regexp-replace* #px"range" car_de_lista "<span class='extra'>&</span>")]
+            [car_de_lista (regexp-replace* #px"global" car_de_lista "<span class='header'>&</span>")]
+            [car_de_lista (regexp-replace* #px"import" car_de_lista "<span class='header'>&</span>")]
+            [car_de_lista (regexp-replace* #px"input" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"float" car_de_lista "<span class='condicional'>&</span>")]
+            [car_de_lista (regexp-replace* #px"def" car_de_lista "<span class='header'>&</span>")]
+            [car_de_lista (regexp-replace* #px"([+]|[-]|[*])" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"#.*" car_de_lista "<span class='header'>&</span>")] ; Comentarios
+            [car_de_lista (regexp-replace* #px"!=" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"==" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"%" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"//" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"[(]|[)]" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"<=" car_de_lista "<span class='operador'>&</span>")]
+            [car_de_lista (regexp-replace* #px"(None|none)" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"(True|true)" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"(False|false)" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"and" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"not" car_de_lista "<span class='booleano'>&</span>")]
+            [car_de_lista (regexp-replace* #px"[0-9]+" car_de_lista "<span class='numero'>&</span>")])
+         ; Apendizamos los formatos HTML e iteramos para el resto de la lista
+         (regexAhtml (cdr listaArchEnt) (append listaHTML (list car_de_lista)))))))
+        ;pasamos como nueva lista el cdr de listaArchEnt y apendizamos a la lista final el nuevo car dado por regex-replace*
+
+; Motor de expresiones regulares para SQL
 (define (regexSQL listaSQL)
   (let regexAhtml 
     ; Definimos un nuevo nombre a la listaPy y una lista final que guardara el sintaxis HTML. La inicializamos vacía.
@@ -173,30 +253,6 @@
         ;pasamos como nueva lista el cdr de listaArchEnt y apendizamos a la lista final el nuevo car dado por regex-replace*
 
 
-; Pedimos archivo del código al usuario
-(display "Ruta de archivo (con extensión): ")
-(define file (open-input-file (symbol->string (read))))
-
-; Mostramos el objeto 'file' en sí
-(display #\newline)
-(display file)
-(display #\newline)
-
-; Implementación de función que muestra el archivo
-(define (print-file char)
-    (if (not (eof-object? char))
-        (cons char (print-file (read-char file)))
-        (begin
-          (close-input-port file)        ; Cerramos archivo
-          (list))))
-
-; Guardamos el código del archivo en una lista de carácteres
-(define list-char-file (print-file (read-char file)))
-
-; Mostramos código del archivo
-(display #\newline)
-(display (list->string list-char-file))
-(display #\newline)
 
 ; Función que convierte los carácteres especiales "<" y ">" para que sean
 ; exitosamente leídos por el navegador
@@ -211,8 +267,17 @@
 
 
 ; Impresión en HTML
-(display-lines-to-file (append headerHTML (regexSQL (list (list->string (process-text list-char-file)))) finalHTML)
+(if (string-suffix? file-title ".sql")
+    (display-lines-to-file (append headerHTML (regexSQL (list (list->string (process-text list-char-file)))) finalHTML)
                       "Prueba.html"
                       #:exists 'replace)
+    (if (string-suffix? file-title ".c")
+        (display-lines-to-file (append headerHTML (regex (list (list->string (process-text list-char-file)))) finalHTML)
+                      "Prueba.html"
+                      #:exists 'replace)
+        (display-lines-to-file (append headerHTML (regexPy (list (list->string (process-text list-char-file)))) finalHTML)
+                      "Prueba.html"
+                      #:exists 'replace)))
+    
 
 ; Sugerencia armar un diccionario

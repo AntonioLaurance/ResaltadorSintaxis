@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- white-space: pre modifica el body para que cada linea finalice con <br> (salto de linea), preservando la sintaxis original -->
+<!-- CSS verde para los números -->
+<!-- CSS morado para los booleanos -->
+<!-- CSS verde para los condicionales -->
+<!-- CSS rosa para los operadores aritmeticos -->
+<!-- CSS negro para los char -->
+<!-- CSS verde para los condicionales especiales -->
+<style>
+body{ white-space: pre; font-family: Courier New; font-size: 14px }
+h3{ text-align: center }
+.center { display: block; margin-left: auto; margin-right: auto; width: 75px; height: 75px ;}
+.numero{ color: darkseagreen; }
+.booleano{ color: blue; }
+.condicional{ color: purple; }
+.extra{ color: hotpink; }
+.operador{ color: black; }
+.header{ color: green; }
+.string{ color: orange }
+.function{ color: yellow }
+</style>
+<title>Resaltador de Sintaxis</title>
+</head>
+<body>
+<h3> Resaltador de Sintaxis</h3>
+<code>
+<span class='header'>/* Uso de apuntadores para hacer un String
+<span class='operador'>*</span>/</span>
+<span class='condicional'>#include</span> &lt;stdio.h&gt;
+<span class='booleano'>
+int </span>main<span class='booleano'><span class='operador'>(</span>void<span class='operador'>)</span></span>{
+<span class='booleano'>	char </span><span class='operador'>*</span>str, c;
+<span class='booleano'>	int </span>i = <span class='numero'>0</span>;
+<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"Give me a string: "</span><span class='operador'>)</span>;
+	
+	<span class='header'>// Read the line </span>
+<span class='condicional'>	while<span class='operador'>(</span></span><span class='operador'>(</span>c = getchar<span class='operador'>(</span><span class='operador'>)</span><span class='operador'>)</span> <span class='operador'>!=</span> '\n'<span class='operador'>)</span>{
+		str[i] = c;
+		i<span class='operador'>+</span><span class='operador'>+</span>; 
+	}
+	
+	str[i] = '\<span class='numero'>0</span>'; <span class='header'>// Null terminator </span>
+<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"Your string is: <span class='operador'>%</span>s\n\n"</span>, str<span class='operador'>)</span>;
+
+<span class='condicional'>	return </span><span class='numero'>0</span>;  <span class='booleano'>auto</span> <span class='booleano'> bool </span><span class='booleano'>volatile</span> <span class='booleano'>enum</span> <span class='booleano'>extern</span> <span class='booleano'>struct</span> <span class='booleano'>union</span> <span class='booleano'>volatile</span> <span class='booleano'>typedef</span>  
+}
+
+</code>
+</body>
+</html>
