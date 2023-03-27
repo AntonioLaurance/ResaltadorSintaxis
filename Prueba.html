@@ -27,52 +27,63 @@ h3{ text-align: center }
 <body>
 <h3> Resaltador de Sintaxis</h3>
 <code>
-<span class='header'>/* Enumerated Types
-<span class='operador'>*</span>  Saturday, <span class='numero'>23</span> October <span class='numero'>2021</span>
-<span class='operador'>*</span>/</span>
+<span class='header'><span class='operador'>-</span><span class='operador'>-</span> MySQL dump <span class='numero'>10</span>.<span class='numero'>13</span>  Distrib <span class='numero'>8</span>.<span class='numero'>0</span>.<span class='numero'>31</span>,<span class='condicional'> for </span>Linux <span class='operador'>(</span>x<span class='numero'>86</span>_<span class='numero'>64</span><span class='operador'>)</span>
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Host: localhost    Database: events
+<span class='operador'>-</span><span class='operador'>-</span> <span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Server version	<span class='numero'>8</span>.<span class='numero'>0</span>.<span class='numero'>31</span><span class='operador'>-</span><span class='numero'>0</span>ubuntu<span class='numero'>0</span>.<span class='numero'>20</span>.<span class='numero'>04</span>.<span class='numero'>1</span>
 
-<span class='condicional'>#include</span> &lt;stdio.h&gt;
-<span class='booleano'>
-enum </span>day{sun, mon, tue, wed, thu, fri, sat};  <span class='header'>//declare type</span>
-<span class='booleano'>typedef</span><span class='booleano'> enum </span>day day; try  
-<span class='booleano'>
-void </span>print_day<span class='operador'>(</span>day d<span class='operador'>)</span>
-{
-<span class='condicional'>	switch<span class='operador'>(</span></span>d<span class='operador'>)</span>{
-		case sun:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Sunday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case mon:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Monday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case tue:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Tuesday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case wed:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Wednesday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case thu:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Thursday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case fri:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Friday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		case sat:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"Saturday"</span><span class='operador'>)</span>;<span class='condicional'><span class='condicional'> break;</span></span>
-		default:<span class='function'> printf<span class='operador'>(</span></span><span class='string'>"<span class='operador'>%</span>d is an error"</span>, d<span class='operador'>)</span>;
-	}
-}
+<span class='header'>/*!<span class='numero'>40101</span> SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION <span class='operador'>*</span>/;
+/*!<span class='numero'>50503</span> SET NAMES utf<span class='numero'>8</span>mb<span class='numero'>4</span> <span class='operador'>*</span>/;
+/*!<span class='numero'>40103</span> SET @OLD_TIME_ZONE=@@TIME_ZONE <span class='operador'>*</span>/;
+/*!<span class='numero'>40103</span> SET TIME_ZONE='<span class='operador'>+</span><span class='numero'>00</span>:<span class='numero'>00</span>' <span class='operador'>*</span>/;
+/*!<span class='numero'>40014</span> SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=<span class='numero'>0</span> <span class='operador'>*</span>/;
+/*!<span class='numero'>40014</span> SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=<span class='numero'>0</span> <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' <span class='operador'>*</span>/;
+/*!<span class='numero'>40111</span> SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=<span class='numero'>0</span> <span class='operador'>*</span>/;
 
-day last_day<span class='operador'>(</span>day d<span class='operador'>)</span>
-{
-<span class='condicional'>	return </span><span class='operador'>(</span>d <span class='operador'>-</span> <span class='numero'>1</span> <span class='operador'>%</span> <span class='numero'>7</span><span class='operador'>)</span>;
-}
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Table structure<span class='condicional'> for </span>table `events`
+<span class='operador'>-</span><span class='operador'>-</span>
+SELECT 
+DroP TablE IF exists `events`;
+/*!<span class='numero'>40101</span> SET @saved_cs_client     = @@character_set_client <span class='operador'>*</span>/;
+/*!<span class='numero'>50503</span> SET character_set_client = utf<span class='numero'>8</span>mb<span class='numero'>4</span> <span class='operador'>*</span>/;
+CREATE TABLE `events` <span class='operador'>(</span>
+  `id`<span class='booleano'> int </span>NOT <span class='booleano'>NULL</span> AUTO_INCREMENT,
+  `lat` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT <span class='booleano'>NULL</span>,
+  `lon` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT <span class='booleano'>NULL</span>,
+  `color` varchar<span class='operador'>(</span><span class='numero'>45</span><span class='operador'>)</span> DEFAULT <span class='booleano'>NULL</span>,
+  PRIMARY KEY <span class='operador'>(</span>`id`<span class='operador'>)</span>
+<span class='operador'>)</span> ENGINE=InnoDB AUTO_INCREMENT=<span class='numero'>13</span> DEFAULT CHARSET=utf<span class='numero'>8</span> COLLATE=utf<span class='numero'>8</span>_general_ci;
+/*!<span class='numero'>40101</span> SET character_set_client = @saved_cs_client <span class='operador'>*</span>/;
 
-day next_day<span class='operador'>(</span>day d<span class='operador'>)</span>
-{
-<span class='condicional'>	return </span><span class='operador'>(</span>d <span class='operador'>+</span> <span class='numero'>1</span> <span class='operador'>%</span> <span class='numero'>7</span><span class='operador'>)</span>;
-}
-<span class='booleano'>
-int </span>main<span class='operador'>(</span><span class='operador'>)</span>
-{
-	day today = fri;
-	print_day<span class='operador'>(</span>today<span class='operador'>)</span>;
-<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
-	print_day<span class='operador'>(</span><span class='numero'>7</span><span class='operador'>)</span>;
-<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
-	print_day<span class='operador'>(</span>next_day<span class='operador'>(</span>today<span class='operador'>)</span><span class='operador'>)</span>;
-<span class='function'>	printf<span class='operador'>(</span></span><span class='string'>"\n\n"</span><span class='operador'>)</span>;
+<span class='operador'>-</span><span class='operador'>-</span>
+<span class='operador'>-</span><span class='operador'>-</span> Dumping data<span class='condicional'> for </span>table `events`
+<span class='operador'>-</span><span class='operador'>-</span>
 
-<span class='condicional'>	return </span><span class='numero'>0</span>;
-}
+LOCK TABLES `events` WRITE;
+/*!<span class='numero'>40000</span> ALTER TABLE `events` DISABLE KEYS <span class='operador'>*</span>/;
+INSERT INTO `events` VALUES <span class='operador'>(</span><span class='numero'>6</span>,'<span class='numero'>19</span>.<span class='numero'>283497023317633</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13551212488649</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>7</span>,'<span class='numero'>19</span>.<span class='numero'>28429688404666</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13537089065343</span>','<span class='numero'>2</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>8</span>,'<span class='numero'>19</span>.<span class='numero'>28365003770222</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13716161592744</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>9</span>,'<span class='numero'>19</span>.<span class='numero'>28491603314897</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13390845644237</span>','<span class='numero'>3</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>10</span>,'<span class='numero'>19</span>.<span class='numero'>284557200939087</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13848389128377</span>','<span class='numero'>1</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>11</span>,'<span class='numero'>19</span>.<span class='numero'>286482053255924</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13777977229077</span>','<span class='numero'>2</span>'<span class='operador'>)</span>,<span class='operador'>(</span><span class='numero'>12</span>,'<span class='numero'>19</span>.<span class='numero'>282143266217208</span>','<span class='operador'>-</span><span class='numero'>99</span>.<span class='numero'>13443188575789</span>','<span class='numero'>3</span>'<span class='operador'>)</span>;
+/*!<span class='numero'>40000</span> ALTER TABLE `events` ENABLE KEYS <span class='operador'>*</span>/;
+UNLOCK TABLES;
+/*!<span class='numero'>40103</span> SET TIME_ZONE=@OLD_TIME_ZONE <span class='operador'>*</span>/;
 
+/*!<span class='numero'>40101</span> SET SQL_MODE=@OLD_SQL_MODE <span class='operador'>*</span>/;
+/*!<span class='numero'>40014</span> SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS <span class='operador'>*</span>/;
+/*!<span class='numero'>40014</span> SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS <span class='operador'>*</span>/;
+/*!<span class='numero'>40101</span> SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION <span class='operador'>*</span>/;
+/*!<span class='numero'>40111</span> SET SQL_NOTES=@OLD_SQL_NOTES <span class='operador'>*</span>/</span>;
+
+<span class='operador'>-</span><span class='operador'>-</span> Dump completed on <span class='numero'>2022</span><span class='operador'>-</span><span class='numero'>11</span><span class='operador'>-</span><span class='numero'>16</span> <span class='numero'>17</span>:<span class='numero'>56</span>:<span class='numero'>01</span>
+
+SELECT UNION
+FROM <span class='operador'>*</span> SELECT aTUN WHERE aux = 'hola' UNION password = '<span class='numero'>123</span>' ORDER BY ASC DES <span class='numero'>12</span> <span class='numero'>35</span> <span class='numero'>43</span> IF ELSE 
+</span>
 </code>
 </body>
 </html>
