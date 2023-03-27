@@ -3,3 +3,5 @@ En este repositorio se desarrollará un resaltador de sintaxis (análisis léxic
 - C
 - Python
 - SQL
+
+El archivo HTML generado por este resaltador se llama *Prueba.html*
